@@ -12,9 +12,9 @@
    <monitor_footer display_txt="" href_link=""/>
    <security key_length="2048" pub_key="RSA" remove_old_cred_age="30" remove_old_cred_freq="24" reuse_oldkey_onstartup_gracetime="900">
       <frontends>
-         <frontend name="vofrontend_service" identity="vofrontend_service@localhost">
+         <frontend name="vofrontend" identity="vagrant-frontend@factory">
             <security_classes>
-               <security_class name="frontend" username="frontend"/>
+               <security_class name="frontend" username="frontend1"/>
             </security_classes>
          </frontend>
       </frontends>

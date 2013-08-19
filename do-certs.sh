@@ -47,7 +47,7 @@ mv *.cnf selfca
 # create CA cert
 openssl req -x509 -nodes -days 3650 -newkey rsa:512 -out selfca/certs/ca.pem -keyout selfca/private/ca.key -config selfca/ssl.cnf
 
-for name in factory frontend submitter
+for name in factory frontend submitter pilot
   do
   export dn=vagrant-${name}
   openssl req -newkey rsa:512 -nodes -keyout selfca/${name}.key -out selfca/${name}.req -config selfca/client.cnf
