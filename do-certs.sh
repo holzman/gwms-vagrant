@@ -50,12 +50,12 @@ echo "01" > selfca/serial
 mv *.cnf selfca
 
 # create CA cert
-openssl req -x509 -nodes -days 3650 -newkey rsa:512 -out selfca/certs/ca.pem -keyout selfca/private/ca.key -config selfca/ssl.cnf
+openssl req -x509 -nodes -days 3650 -newkey rsa:1024 -out selfca/certs/ca.pem -keyout selfca/private/ca.key -config selfca/ssl.cnf
 
-for name in factory frontend submitter pilot
+for name in factory frontend osgce pilot
   do
   export dn=vagrant-${name}
-  openssl req -newkey rsa:512 -nodes -keyout selfca/${name}.key -out selfca/${name}.req -config selfca/client.cnf
+  openssl req -newkey rsa:1024 -nodes -keyout selfca/${name}.key -out selfca/${name}.req -config selfca/client.cnf
   openssl ca -batch -notext -in selfca/${name}.req -out selfca/${name}.pem -config selfca/ssl.cnf
   mv selfca/${name}.key clientcerts
   mv selfca/${name}.pem clientcerts
