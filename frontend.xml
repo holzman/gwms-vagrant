@@ -2,6 +2,7 @@
    <log_retention>
       <process_logs>
          <process_log max_days="7.0" max_mbytes="100.0" min_days="3.0" msg_types="ALL"/>
+         <process_log max_days="7.0" max_mbytes="100.0" min_days="3.0" msg_types="INFO,ERR,WARN"/>
          <process_log max_days="7.0" max_mbytes="100.0" min_days="3.0" msg_types="DEBUG"/>
       </process_logs>
    </log_retention>
