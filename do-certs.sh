@@ -1,4 +1,9 @@
 #!/bin/bash
+cat > ca.signing_policy <<EOF
+access_id_CA            X509    '/CN=vagrant-gwms-self-ca'
+pos_rights              globus  CA:sign
+cond_subjects           globus  '"*"'
+EOF
 
 cat > ssl.cnf <<"EOF"
 [ ca ]
@@ -57,3 +62,4 @@ for name in factory frontend submitter pilot
 done
 
 cp selfca/certs/ca.pem clientcerts
+mv ca.signing_policy clientcerts

@@ -14,7 +14,7 @@
       <frontends>
          <frontend name="vofrontend" identity="vagrant-frontend@factory">
             <security_classes>
-               <security_class name="frontend" username="frontend1"/>
+               <security_class name="frontend" username="frontend"/>
             </security_classes>
          </frontend>
       </frontends>
