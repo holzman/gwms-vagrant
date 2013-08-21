@@ -7,28 +7,28 @@
       </process_logs>
    </log_retention>
    <match match_expr="True">
-      <factory query_expr='((stringListMember("vagrant", GLIDEIN_Supported_VOs)))'>
+      <factory query_expr="True">
          <match_attrs>
          </match_attrs>
          <collectors>
-            <collector DN="/CN=vagrant-factory" comment="Factory Collector" factory_identity="gfactory@factory" my_identity="vagrant-frontend@factory" node="192.168.60.2"/>
+            <collector DN="/CN=vagrant-factory" comment="Factory Collector" factory_identity="gfactory@vagrant-factory" my_identity="frontend@vagrant-factory" node="192.168.60.2"/>
          </collectors>
       </factory>
       <job comment="Define job constraint and schedds globally for simplicity" query_expr="(JobUniverse==5)&amp;&amp;(GLIDEIN_Is_Monitor =!= TRUE)&amp;&amp;(JOB_Is_Monitor =!= TRUE)">
          <match_attrs>
          </match_attrs>
          <schedds>
-            <schedd DN="/CN=vagrant-frontend" fullname="localhost"/>
+            <schedd DN="/CN=vagrant-frontend" fullname="vagrant-frontend"/>
          </schedds>
       </job>
    </match>
    <monitor base_dir="/var/lib/gwms-frontend/web-area/monitor" flot_dir="/usr/share/javascriptrrd/flot" javascriptRRD_dir="/usr/share/javascriptrrd/js" jquery_dir="/usr/share/javascriptrrd/flot"/>
-   <security classad_proxy="/tmp/vo_proxy" proxy_DN="/CN=pilot" proxy_selection_plugin="ProxyAll" security_name="fe-sec" sym_key="aes_256_cbc">
+   <security classad_proxy="/tmp/vo_proxy" proxy_DN="/CN=vagrant-pilot" proxy_selection_plugin="ProxyAll" security_name="vagrant-frontend" sym_key="aes_256_cbc">
       <credentials>
-         <credential absfname="/tmp/vo_proxy" security_class="frontend" trust_domain="OSG" type="grid_proxy"/>
+         <credential absfname="/tmp/vo_proxy" security_class="vagrant-frontend" trust_domain="OSG" type="grid_proxy"/>
       </credentials>
    </security>
-   <stage base_dir="/var/lib/gwms-frontend/web-area/stage" use_symlink="True" web_base_url="http://localhost/vofrontend/stage"/>
+   <stage base_dir="/var/lib/gwms-frontend/web-area/stage" use_symlink="True" web_base_url="http://vagrant-frontend/vofrontend/stage"/>
    <work base_dir="/var/lib/gwms-frontend/vofrontend" base_log_dir="/var/log/gwms-frontend"/>
    <attrs>
       <attr name="GLIDECLIENT_Rank" glidein_publish="False" job_publish="False" parameter="True" type="string" value="1"/>
@@ -68,8 +68,8 @@
       </group>
    </groups>
    <collectors>
-      <collector DN="/DN=vagrant-frontend" node="localhost:9618" secondary="False"/>
-      <collector DN="/DN=vagrant-frontend" node="localhost:9620-9640" secondary="True"/>
+      <collector DN="/DN=vagrant-frontend" node="vagrant-frontend:9618" secondary="False"/>
+      <collector DN="/DN=vagrant-frontend" node="vagrant-frontend:9620-9640" secondary="True"/>
    </collectors>
    <files>
    </files>
