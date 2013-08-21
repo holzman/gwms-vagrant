@@ -1,0 +1,14 @@
+universe = vanilla
+executable = test.sh
+notification = Never
+output = $(Cluster).$(Process).out
+error =  $(Cluster).$(Process).err
+log =  test.log
+#x509userproxy=/tmp/x509up_u12697
+
+requirements = (Memory >= 1 && OpSys == "LINUX")
++DESIRED_SITES="vagrant-osgce"
+queue 1
+
+
+
