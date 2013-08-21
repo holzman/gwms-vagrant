@@ -68,8 +68,8 @@
       </group>
    </groups>
    <collectors>
-      <collector DN="/DN=vagrant-frontend" node="vagrant-frontend:9618" secondary="False"/>
-      <collector DN="/DN=vagrant-frontend" node="vagrant-frontend:9620-9640" secondary="True"/>
+      <collector DN="/CN=vagrant-frontend" node="vagrant-frontend:9618" secondary="False"/>
+      <collector DN="/CN=vagrant-frontend" node="vagrant-frontend:9620-9640" secondary="True"/>
    </collectors>
    <files>
    </files>
