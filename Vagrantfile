@@ -37,7 +37,7 @@ rm -f /etc/condor/config.d/00personal_condor.config
 
 /sbin/service condor start
 /sbin/service httpd start
-/sbin/service gwms-factory reconfig
+/sbin/service gwms-factory upgrade
 /sbin/service gwms-factory start
 SCRIPT
 
@@ -53,12 +53,14 @@ cp -f /vagrant/frontend.xml /etc/gwms-frontend/frontend.xml
 
 # pilot cert
 cp /vagrant/clientcerts/pilot.* ~frontend
-chown vagrant:vagrant ~frontend/pilot.*
+chown frontend ~frontend/pilot.*
 chmod 600 ~frontend/pilot.key
 su frontend -s /bin/bash -c 'grid-proxy-init -valid 9999:0 -key ~frontend/pilot.key -cert ~frontend/pilot.pem -out /tmp/vo_proxy'
 
 # user cert
 cp /vagrant/clientcerts/user.* /home/vagrant
+chown vagrant /home/vagrant/user.*
+chmod 600 /home/vagrant/user.key
 su vagrant -c 'grid-proxy-init -valid 9999:0 -key user.key -cert user.pem -out /tmp/user_proxy'
 
 cp -a /vagrant/jobs /home/vagrant
@@ -80,13 +82,14 @@ mkdir -p /osg/app/etc
 mkdir -p /osg/data
 mkdir -p /osg/wn_tmp
 chmod 1777 /osg/app /osg/data /osg/wn_tmp /osg/app/etc
-osg-configure -c
 useradd user01
+useradd user02
 echo "/CN=vagrant-pilot user01" > /etc/grid-security/grid-mapfile
-echo "/CN=vagrant-user user02" > /etc/grid-security/grid-mapfile
+echo "/CN=vagrant-user user02" >> /etc/grid-security/grid-mapfile
 yum -y install osg-wn-client-glexec
 cp -f /vagrant/lcmaps.db /etc/lcmaps.db
 /sbin/service condor start
+osg-configure -c
 /sbin/service globus-gatekeeper start
 /sbin/service globus-gridftp-server start
 SCRIPT
