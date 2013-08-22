@@ -4,7 +4,7 @@ notification = Never
 output = $(Cluster).$(Process).out
 error =  $(Cluster).$(Process).err
 log =  test.log
-#x509userproxy=/tmp/x509up_u12697
+x509userproxy=/tmp/user_proxy
 
 requirements = (Memory >= 1 && OpSys == "LINUX")
 +DESIRED_SITES="vagrant-osgce"
