@@ -21,6 +21,9 @@ cp /vagrant/clientcerts/ca.signing_policy /etc/grid-security/certificates
 hash=`openssl x509 -in /etc/grid-security/certificates/ca.pem -noout -hash`
 ln -s /etc/grid-security/certificates/ca.pem /etc/grid-security/certificates/${hash}.0
 ln -s /etc/grid-security/certificates/ca.signing_policy /etc/grid-security/certificates/${hash}.signing_policy
+
+su vagrant -c 'cp /vagrant/gitignore_global /home/vagrant/.gitignore_global'
+su vagrant -c 'cp /vagrant/gitconfig /home/vagrant/.gitconfig'
 SCRIPT
 
 Vagrant.configure("2") do |config|

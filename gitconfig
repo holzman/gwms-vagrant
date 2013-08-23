@@ -1,0 +1,14 @@
+[core]
+	excludesfile = /home/vagrant/.gitignore_global
+[color]
+        ui = auto
+[alias]
+        st = status
+        co = checkout
+        br = branch
+        gl = log --oneline --graph --decorate --all
+        cp = cherry-pick
+        gg = log --oneline --graph --decorate
+[color "decorate"]
+        tag = blue
+
