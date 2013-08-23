@@ -8,7 +8,7 @@ echo "192.168.60.4 vagrant-osgce vagrant-osgce.local" >> /etc/hosts
 hostname vagrant-osgce
 
 /sbin/service iptables stop
-yum -y install man wget emacs-nox diffutils strace bind-utils git
+yum -y install man wget emacs-nox diffutils strace bind-utils git lsof
 rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum -y install yum-priorities
 rpm -Uvh http://repo.grid.iu.edu/osg-el6-release-latest.rpm
