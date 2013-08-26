@@ -19,6 +19,7 @@
          </match_attrs>
          <schedds>
             <schedd DN="/CN=vagrant-frontend" fullname="vagrant-frontend"/>
+            <schedd DN="/CN=vagrant-frontend" fullname="schedd_jobs2@vagrant-frontend"/>
          </schedds>
       </job>
    </match>
