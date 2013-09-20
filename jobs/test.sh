@@ -2,4 +2,5 @@
 
 hostname
 printenv
+sleep 300
 echo 'done'

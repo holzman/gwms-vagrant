@@ -8,7 +8,7 @@ x509userproxy=/tmp/user_proxy
 
 requirements = (Memory >= 1 && OpSys == "LINUX")
 +DESIRED_SITES="vagrant-osgce"
-queue 1
+queue 50
 
 
 
