@@ -30,6 +30,13 @@ su vagrant -c 'grid-proxy-init -valid 9999:0 -key user.key -cert user.pem -out /
 cp -a /vagrant/jobs /home/vagrant
 rm -f /etc/condor/config.d/00personal_condor.config
 
+# Install Condor 8.1
+yum -y install libvirt policycoreutils-python
+rpm -e condor-procd --nodeps
+rpm -Uvh /vagrant/condor-8.1.0-150015.rhel6.3.x86_64.rpm
+echo "" > /etc/condor/condor_config.local
+echo "NETWORK_INTERFACE = eth1" >> /etc/condor/config.d/90_gwms_dns.config
+
 /sbin/service condor start
 /sbin/service httpd start
 /sbin/service gwms-frontend reconfig
