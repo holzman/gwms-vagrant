@@ -16,6 +16,11 @@ chown frontend ~frontend/pilot.*
 chmod 600 ~frontend/pilot.key
 su frontend -s /bin/bash -c 'grid-proxy-init -valid 9999:0 -key ~frontend/pilot.key -cert ~frontend/pilot.pem -out /tmp/vo_proxy'
 
+# host cert-proxy
+grid-proxy-init -valid 9999:0 -key /etc/grid-security/hostkey.pem -cert /etc/grid-security/hostcert.pem -out /tmp/host_proxy
+chown frontend /tmp/host_proxy
+chmod 600 /tmp/host_proxy
+
 # user cert
 cp /vagrant/clientcerts/user.* /home/vagrant
 chown vagrant /home/vagrant/user.*
