@@ -11,6 +11,10 @@ hostname vagrant-factory
 
 rm -f /etc/condor/config.d/00personal_condor.config
 
+useradd -M -c "VO Frontend User 2" -d /var/lib/gwms-factory -s /sbin/nologin frontend-2
+sed -i 's/valid-target-uids = frontend/valid-target-uids = frontend : frontend-2/' /etc/condor/privsep_config
+sed -i 's/valid-target-gids = frontend/valid-target-gids = frontend : frontend-2/' /etc/condor/privsep_config
+
 /sbin/service condor start
 /sbin/service httpd start
 /sbin/service gwms-factory upgrade

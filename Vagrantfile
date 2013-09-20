@@ -4,7 +4,8 @@
 $script = <<SCRIPT
 echo "192.168.60.2 vagrant-factory vagrant-factory.local" >> /etc/hosts
 echo "192.168.60.3 vagrant-frontend vagrant-frontend.local" >> /etc/hosts
-echo "192.168.60.4 vagrant-osgce vagrant-osgce.local" >> /etc/hosts
+echo "192.168.60.4 vagrant-frontend-2 vagrant-frontend-2.local" >> /etc/hosts
+echo "192.168.60.5 vagrant-osgce vagrant-osgce.local" >> /etc/hosts
 hostname vagrant-osgce
 
 /sbin/service iptables stop
@@ -46,8 +47,15 @@ Vagrant.configure("2") do |config|
     frontend.vm.provision :shell, :path => "frontend-git-link.sh"
   end
 
+  config.vm.define :frontend2 do |frontend2|
+    frontend2.vm.network :private_network, ip: "192.168.60.4"
+    frontend2.vm.provision :shell, :path => "frontend-setup.sh"
+#    frontend2.vm.provision :shell, :path => "frontend-setup-2b.sh"
+    frontend2.vm.provision :shell, :path => "frontend-git-link.sh"
+  end
+
   config.vm.define :osgce do |osgce|
-    osgce.vm.network :private_network, ip: "192.168.60.4"
+    osgce.vm.network :private_network, ip: "192.168.60.5"
     osgce.vm.provision :shell, :path => "osgce-setup.sh"
   end
 

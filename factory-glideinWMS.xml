@@ -17,6 +17,11 @@
                <security_class name="vagrant-frontend" username="frontend"/>
             </security_classes>
          </frontend>
+         <frontend name="vagrant-frontend-2" identity="frontend-2@vagrant-factory">
+            <security_classes>
+               <security_class name="vagrant-frontend-2" username="frontend-2"/>
+            </security_classes>
+         </frontend>
       </frontends>
    </security>
    <stage base_dir="/var/lib/gwms-factory/web-area/stage" use_symlink="True" web_base_url="http://vagrant-factory/factory/stage"/>

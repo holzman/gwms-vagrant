@@ -1,5 +1,6 @@
 GSI "^\/CN\=vagrant-pilot$" frontend
 GSI "^\/CN\=vagrant-frontend$" frontend
+GSI "^\/CN\=vagrant-frontend-2$" frontend-2
 GSI "^\/CN\=vagrant-factory$" gfactory
 GSI (.*) anonymous
 FS (.*) \1
