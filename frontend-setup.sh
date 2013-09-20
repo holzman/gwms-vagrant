@@ -7,6 +7,7 @@ cp /vagrant/clientcerts/frontend.key /etc/grid-security/hostkey.pem
 cp /vagrant/condor_mapfile /etc/condor/certs/condor_mapfile
 chmod 600 /etc/grid-security/hostkey.pem
 cp /vagrant/clientcerts/ca.pem /etc/grid-security/certificates
+mv /etc/gwms-frontend/frontend.xml /etc/gwms-frontend/frontend.xml.orig
 cp -f /vagrant/frontend.xml /etc/gwms-frontend/frontend.xml
 
 # pilot cert
