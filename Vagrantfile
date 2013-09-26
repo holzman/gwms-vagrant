@@ -8,6 +8,8 @@ echo "192.168.60.4 vagrant-frontend-2 vagrant-frontend-2.local" >> /etc/hosts
 echo "192.168.60.5 vagrant-osgce vagrant-osgce.local" >> /etc/hosts
 hostname vagrant-osgce
 
+echo "192.168.60.6 vagrant-frontend-v2 vagrant-frontend-v2.local" >> /etc/hosts
+
 /sbin/service iptables stop
 yum -y install man wget emacs-nox diffutils strace bind-utils git lsof patch
 rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
@@ -53,6 +55,13 @@ Vagrant.configure("2") do |config|
 #    frontend2.vm.provision :shell, :path => "frontend-setup-2b.sh"
     frontend2.vm.provision :shell, :path => "frontend-git-link.sh"
   end
+
+  config.vm.define :frontend_v2 do |frontend_v2|
+    frontend_v2.vm.network :private_network, ip: "192.168.60.6"
+    frontend_v2.vm.provision :shell, :path => "frontend-v2-setup.sh"
+    frontend_v2.vm.provision :shell, :path => "frontend-v2-git-link.sh"
+  end
+
 
   config.vm.define :osgce do |osgce|
     osgce.vm.network :private_network, ip: "192.168.60.5"
