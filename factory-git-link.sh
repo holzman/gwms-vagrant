@@ -4,7 +4,7 @@ rm -rf /usr/lib/python2.6/site-packages/glideinwms
 cd /usr/lib/python2.6/site-packages
 git clone http://cdcvs.fnal.gov/projects/glideinwms
 cd glideinwms
-git checkout v3_2_rc2
+git checkout master
 
 binfiles="analyze_entries analyze_frontends analyze_queues cat_MasterLog cat_StartdLog \
           cat_StarterLog cat_XMLResult cat_logs configGUI convert_factory_2to3.sh \

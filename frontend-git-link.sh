@@ -4,7 +4,7 @@ rm -rf /usr/lib/python2.6/site-packages/glideinwms
 cd /usr/lib/python2.6/site-packages
 git clone http://cdcvs.fnal.gov/projects/glideinwms
 cd glideinwms
-git checkout v3_2_rc2
+git checkout master
 
 sbinfiles="glidecondor_addDN glidecondor_createSecCol glidecondor_createSecSched \
            checkFrontend glidecondor_addDN glidecondor_createSecCol \
