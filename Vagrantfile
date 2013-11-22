@@ -49,12 +49,12 @@ Vagrant.configure("2") do |config|
     frontend.vm.provision :shell, :path => "frontend-git-link.sh"
   end
 
-  config.vm.define :frontend2 do |frontend2|
-    frontend2.vm.network :private_network, ip: "192.168.60.4"
-    frontend2.vm.provision :shell, :path => "frontend-setup.sh"
-#    frontend2.vm.provision :shell, :path => "frontend-setup-2b.sh"
-    frontend2.vm.provision :shell, :path => "frontend-git-link.sh"
-  end
+#  config.vm.define :frontend2 do |frontend2|
+#    frontend2.vm.network :private_network, ip: "192.168.60.4"
+#    frontend2.vm.provision :shell, :path => "frontend-setup.sh"
+##    frontend2.vm.provision :shell, :path => "frontend-setup-2b.sh"
+#    frontend2.vm.provision :shell, :path => "frontend-git-link.sh"
+#  end
 
   config.vm.define :frontend_v2 do |frontend_v2|
     frontend_v2.vm.network :private_network, ip: "192.168.60.6"
