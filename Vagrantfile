@@ -66,6 +66,9 @@ Vagrant.configure("2") do |config|
   config.vm.define :osgce do |osgce|
     osgce.vm.network :private_network, ip: "192.168.60.5"
     osgce.vm.provision :shell, :path => "osgce-setup.sh"
+    osgce.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--cpus", "4"]
+    end
   end
 
 end
