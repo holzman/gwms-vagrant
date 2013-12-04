@@ -35,7 +35,7 @@
       <attr name="GLIDEIN_Max_Walltime" comment="4 hour queue" const="True" glidein_publish="False" job_publish="False" parameter="True" publish="True" type="int" value="14400"/>
    </attrs>
    <entries>
-      <entry name="vagrant-osgce" enabled="True" gatekeeper="vagrant-osgce/jobmanager-condor" gridtype="gt2" rsl="(queue=default)(jobtype=single)" schedd_name="schedd_glideins2@vagrant-factory" verbosity="std" work_dir="OSG">
+      <entry name="vagrant-osgce" enabled="False" gatekeeper="vagrant-osgce/jobmanager-condor" gridtype="gt2" rsl="(queue=default)(jobtype=single)" schedd_name="schedd_glideins2@vagrant-factory" verbosity="std" work_dir="OSG">
          <config>
             <max_jobs>
                 <per_entry held="1000" idle="4000" glideins="10000"/>
@@ -64,6 +64,41 @@
          <monitorgroups>
          </monitorgroups>
       </entry>
+
+
+      <entry name="vagrant-osgce-partitionable" enabled="True" gatekeeper="vagrant-osgce/jobmanager-condor" gridtype="gt2" rsl="(queue=default)(jobtype=single)" schedd_name="schedd_glideins2@vagrant-factory" verbosity="std" work_dir="OSG">
+         <config>
+            <max_jobs>
+                <per_entry held="1000" idle="4000" glideins="10000"/>
+                <default_per_frontend held="100" idle="400" glideins="5000"/>
+                <per_frontends>
+                </per_frontends>
+            </max_jobs>
+            <release max_per_cycle="20" sleep="0.2"/>
+            <remove max_per_cycle="5" sleep="0.2"/>
+            <restrictions require_voms_proxy="False"/>
+            <submit cluster_size="10" max_per_cycle="100" sleep="0.2" slots_layout="partitionable"/>
+         </config>
+         <allow_frontends>
+         </allow_frontends>
+         <attrs>
+            <attr name="CONDOR_ARCH" const="False" glidein_publish="False" job_publish="False" parameter="True" publish="True" type="string" value="default"/>
+            <attr name="CONDOR_OS" const="False" glidein_publish="False" job_publish="False" parameter="True" publish="True" type="string" value="default"/>
+            <attr name="GLEXEC_BIN" const="True" glidein_publish="False" job_publish="False" parameter="True" publish="True" type="string" value="OSG"/>
+            <attr name="GLIDEIN_Site" const="True" glidein_publish="True" job_publish="True" parameter="True" publish="True" type="string" value="vagrant-osgce-partitionable"/>
+            <attr name="GLIDEIN_CPUS" const="True" glidein_publish="False" job_publish="True" parameter="True" publish="True" type="string" value="4"/>
+            <attr name="GLIDEIN_Supported_VOs" const="True" glidein_publish="False" job_publish="False" parameter="True" publish="True" type="string" value="vagrant"/>
+         </attrs>
+         <files>
+         </files>
+         <infosys_refs>
+         </infosys_refs>
+         <monitorgroups>
+         </monitorgroups>
+      </entry>
+
+
+
    </entries>
    <condor_tarballs>
       <condor_tarball arch="default" base_dir="/usr" os="default" version="default"/>

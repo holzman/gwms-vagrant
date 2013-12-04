@@ -1,14 +1,12 @@
 universe = vanilla
 executable = test.sh
 notification = Never
-output = $(Cluster).$(Process).out
-error =  $(Cluster).$(Process).err
+output = logs/$(Cluster).$(Process).out
+error =  logs/$(Cluster).$(Process).err
 log =  test.log
 x509userproxy=/tmp/user_proxy
 
 requirements = (Memory >= 1 && OpSys == "LINUX")
-+DESIRED_SITES="vagrant-osgce"
-queue 50
-
-
-
++DESIRED_SITES="vagrant-osgce-partitionable"
+requestcpus = 4
+queue 20
