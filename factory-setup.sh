@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# work around openssl 1.0.1e issues
+echo 'EXCLUDE="${EXCLUDE} openssl*"' >> /etc/sysconfig/yum-autoupdate
+
 yum -y install --enablerepo=osg-upcoming-development glideinwms-factory
 cp /vagrant/clientcerts/factory.pem /etc/grid-security/hostcert.pem
 cp /vagrant/clientcerts/factory.key /etc/grid-security/hostkey.pem

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# work around openssl 1.0.1e issues
+echo 'EXCLUDE="${EXCLUDE} openssl*"' >> /etc/sysconfig/yum-autoupdate
+
 cp /vagrant/clientcerts/osgce.pem /etc/grid-security/hostcert.pem
 cp /vagrant/clientcerts/osgce.key /etc/grid-security/hostkey.pem
 chmod 600 /etc/grid-security/hostkey.pem
