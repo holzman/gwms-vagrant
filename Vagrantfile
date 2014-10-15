@@ -12,6 +12,7 @@ echo "192.168.60.6 vagrant-frontend-v2 vagrant-frontend-v2.local" >> /etc/hosts
 
 /sbin/service iptables stop
 yum -y install man wget emacs-nox diffutils strace bind-utils git lsof patch libvirt policycoreutils policycoreutils-python
+yum -y update nss-softokn
 rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum -y install yum-priorities
 rpm -Uvh http://repo.grid.iu.edu/osg-el6-release-latest.rpm
