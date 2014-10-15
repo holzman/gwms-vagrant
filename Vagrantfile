@@ -32,7 +32,7 @@ SCRIPT
 Vagrant.configure("2") do |config|
   config.vm.box = "sl6-64-lyte"
   config.vm.box_url = "http://lyte.id.au/vagrant/sl6-64-lyte.box"
-  config.vm.provision :shell, :inline => $script
+  config.vm.provision :shell, :inline => $script, run: "always"
   config.vm.provider :virtualbox do |vb|
      vb.customize ["modifyvm", :id, "--cpus", "1"]
   end
