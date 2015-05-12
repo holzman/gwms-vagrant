@@ -5,7 +5,7 @@ hostname vagrant-frontend
 # work around openssl 1.0.1e issues
 echo 'EXCLUDE="${EXCLUDE} openssl*"' >> /etc/sysconfig/yum-autoupdate
 
-yum -y install --enablerepo=osg-upcoming-development glideinwms-vofrontend
+yum -y install --enablerepo=osg-testing glideinwms-vofrontend
 cp /vagrant/clientcerts/frontend.pem /etc/grid-security/hostcert.pem
 cp /vagrant/clientcerts/frontend.key /etc/grid-security/hostkey.pem
 cp /vagrant/condor_mapfile /etc/condor/certs/condor_mapfile

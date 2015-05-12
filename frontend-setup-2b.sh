@@ -1,7 +1,7 @@
 #!/bin/bash
 
 hostname vagrant-frontend-2
-yum -y install --enablerepo=osg-upcoming-development glideinwms-vofrontend
+yum -y install --enablerepo=osg-testing glideinwms-vofrontend
 cp /vagrant/clientcerts/frontend.pem /etc/grid-security/hostcert.pem
 cp /vagrant/clientcerts/frontend.key /etc/grid-security/hostkey.pem
 cp /vagrant/condor_mapfile /etc/condor/certs/condor_mapfile
