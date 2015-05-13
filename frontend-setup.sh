@@ -13,6 +13,7 @@ chmod 600 /etc/grid-security/hostkey.pem
 cp /vagrant/clientcerts/ca.pem /etc/grid-security/certificates
 mv /etc/gwms-frontend/frontend.xml /etc/gwms-frontend/frontend.xml.orig
 cp -f /vagrant/frontend.xml /etc/gwms-frontend/frontend.xml
+chown frontend /etc/gwms-frontend/frontend.xml
 
 # pilot cert
 cp /vagrant/clientcerts/pilot.* ~frontend
@@ -36,6 +37,6 @@ rm -f /etc/condor/config.d/00personal_condor.config
 
 /sbin/service condor start
 /sbin/service httpd start
-/sbin/service gwms-frontend reconfig
+/sbin/service gwms-frontend upgrade
 /sbin/service gwms-frontend start
 

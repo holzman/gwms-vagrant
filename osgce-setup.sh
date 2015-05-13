@@ -1,5 +1,7 @@
 #!/bin/bash
 
+hostname vagrant-osgce
+
 # work around openssl 1.0.1e issues
 echo 'EXCLUDE="${EXCLUDE} openssl*"' >> /etc/sysconfig/yum-autoupdate
 

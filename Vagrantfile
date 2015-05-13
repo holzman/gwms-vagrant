@@ -6,16 +6,17 @@ echo "192.168.60.2 vagrant-factory vagrant-factory.local" >> /etc/hosts
 echo "192.168.60.3 vagrant-frontend vagrant-frontend.local" >> /etc/hosts
 echo "192.168.60.4 vagrant-frontend-2 vagrant-frontend-2.local" >> /etc/hosts
 echo "192.168.60.5 vagrant-osgce vagrant-osgce.local" >> /etc/hosts
-hostname vagrant-osgce
 
 echo "192.168.60.6 vagrant-frontend-v2 vagrant-frontend-v2.local" >> /etc/hosts
+
+echo "192.168.60.7 vagrant-osgwn vagrant-osgwn.local" >> /etc/hosts
 
 /sbin/service iptables stop
 yum -y install man wget emacs-nox diffutils strace bind-utils git lsof patch libvirt policycoreutils policycoreutils-python
 yum -y update nss-softokn
 rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum -y install yum-priorities
-rpm -Uvh http://repo.grid.iu.edu/osg-el6-release-latest.rpm
+rpm -Uvh http://repo.grid.iu.edu/osg/3.2/osg-3.2-el6-release-latest.rpm
 yum -y install osg-ca-certs
 cd /etc/yum.repos.d &&  wget http://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-stable-rhel6.repo
 yum -y install condor.x86_64
@@ -70,6 +71,11 @@ Vagrant.configure("2") do |config|
     osgce.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--cpus", "4"]
     end
+  end
+
+  config.vm.define :osgwn do |osgwn|
+    osgwn.vm.network :private_network, ip: "192.168.60.7"
+    osgwn.vm.provision :shell, :path => "osgwn-setup.sh"
   end
 
 end
